@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b4f9c">
+  <title>TiYe AI | Trợ lý AI Trường THCS&THPT Tiên Yên</title>
+  <meta name="description" content="TiYe AI - Trợ lý AI của Trường THCS&THPT Tiên Yên.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230b4f9c'/%3E%3Cpath d='M18 32h28M32 18v28' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=15">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-symbol" aria-hidden="true"><span>✦</span></div>
+        <div class="brand-copy">
+          <div class="brand-name">TiYe AI</div>
+          <div class="brand-subtitle">Trợ lý AI · THCS&THPT Tiên Yên</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="status" aria-live="polite">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Đang kiểm tra...</span>
+        </div>
+        <div class="author-label">Sản phẩm của <strong>Ngô Thái Tuấn</strong></div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero" id="welcomePanel">
+        <div class="hero-kicker">TRỢ LÝ HỌC SINH TIÊN YÊN</div>
+        <h1>Xin chào, mình là <span>TiYe AI</span>.</h1>
+        <p>Mình hỗ trợ tra cứu những thông tin đã được cung cấp trong tài liệu của nhà trường, từ thời khóa biểu đến các kế hoạch và hoạt động.</p>
+
+        <div class="quick-grid quick-grid-three">
+          <button class="quick-card" data-question="Hiệu trưởng của trường là ai?">
+            <span class="quick-icon">👤</span>
+            <span class="quick-title">Nhà trường</span>
+            <span class="quick-desc">Cán bộ, thông tin chung</span>
+          </button>
+          <button class="quick-card" data-question="Hội thi Tien Yen Got Talent mùa 2 tổ chức ở đâu?">
+            <span class="quick-icon">🎤</span>
+            <span class="quick-title">Hoạt động</span>
+            <span class="quick-desc">Sự kiện, kế hoạch, hội thi</span>
+          </button>
+          <button class="quick-card" data-question="Thứ 2 buổi sáng lớp 10A1 có những môn nào?">
+            <span class="quick-icon">📚</span>
+            <span class="quick-title">Thời khóa biểu</span>
+            <span class="quick-desc">Hỏi theo lớp, ngày, buổi</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="chat-area">
+        <div class="messages" id="messages" aria-live="polite" aria-label="Lịch sử trò chuyện"></div>
+
+        <div class="composer-zone">
+          <form class="composer" id="chatForm">
+            <textarea id="question" rows="1" maxlength="2000" autocomplete="off" placeholder="Bạn muốn hỏi TiYe AI điều gì?"></textarea>
+            <button class="send-btn" id="sendBtn" type="submit" aria-label="Gửi câu hỏi" title="Gửi">
+              <span>↑</span>
+            </button>
+          </form>
+          <div class="composer-note">Thông tin AI cung cấp có thể mắc sai sót.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-main"><span>TiYe AI</span> · Trợ lý AI của Trường THCS&THPT Tiên Yên</div>
+      <button class="documents-link" id="documentsBtn" type="button" aria-haspopup="dialog" aria-controls="documentsPanel">
+        <span class="documents-link-icon" aria-hidden="true">▤</span>
+        <span>Tài liệu hỗ trợ tra cứu</span>
+        <span class="documents-link-arrow" aria-hidden="true">↗</span>
+      </button>
+    </footer>
+  </div>
+
+  <div class="documents-overlay" id="documentsOverlay" hidden>
+    <div class="documents-modal" id="documentsPanel" role="dialog" aria-modal="true" aria-labelledby="documentsTitle">
+      <div class="documents-panel-head">
+        <div>
+          <div class="documents-kicker">TIYE AI · THƯ VIỆN HỖ TRỢ</div>
+          <h2 id="documentsTitle">Tài liệu hỗ trợ tra cứu</h2>
+          <p>Các tài liệu hiện được hệ thống sử dụng làm nguồn thông tin để trả lời câu hỏi.</p>
+        </div>
+        <button class="documents-close" id="documentsClose" type="button" aria-label="Đóng">×</button>
+      </div>
+      <div class="documents-toolbar">
+        <div class="document-search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input id="documentSearch" type="search" placeholder="Tìm tên tài liệu..." autocomplete="off">
+        </div>
+        <span id="documentCount" class="document-count">Đang tải...</span>
+      </div>
+      <div class="documents-list" id="documentsList" aria-live="polite">
+        <div class="documents-loading">Đang tải danh sách tài liệu...</div>
+      </div>
+      <div class="documents-note">Tệp được cung cấp để người dùng tham khảo; nội dung AI trả lời vẫn phụ thuộc vào bằng chứng mà hệ thống tìm thấy.</div>
+    </div>
+  </div>
+
+  <template id="userTemplate">
+    <div class="message-row user-row">
+      <div class="avatar user-avatar">Bạn</div>
+      <div class="message-content">
+        <div class="message-label">Bạn</div>
+        <div class="bubble user-bubble"></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="botTemplate">
+    <div class="message-row bot-row">
+      <div class="avatar bot-avatar">✦</div>
+      <div class="message-content">
+        <div class="message-label bot-label">TiYe AI</div>
+        <div class="bubble bot-bubble"></div>
+        <div class="meta-line"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="app.js?v=15"></script>
+</body>
+</html>

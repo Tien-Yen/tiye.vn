@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+
+# Local school data / generated indexes
+/data/documents/
+/data/processed/
+/data/chroma/
+
+# Local model/cache files
+.ollama/
+*.gguf
+*.safetensors
