@@ -272,4 +272,3 @@ documentsList?.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !documentsOverlay.hidden) closeDocuments();
 });
- 
