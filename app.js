@@ -1,4 +1,4 @@
-const API_BASE = "";
+const API_BASE = window.TIYE_API_BASE || "";
 
 function apiUrl(path) {
   return `${API_BASE}${path}`;
