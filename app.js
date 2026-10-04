@@ -1,4 +1,4 @@
-const API_BASE = window.TIYE_API_BASE || "";
+// Public TiYe AI backend\nconst API_BASE = "https://desktop-qb-971.tail03a7f6.ts.net";
 
 function apiUrl(path) {
   return `${API_BASE}${path}`;
