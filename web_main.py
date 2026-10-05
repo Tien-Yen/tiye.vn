@@ -12,7 +12,6 @@ from urllib.parse import quote
 from threading import Lock
 
 from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -32,15 +31,6 @@ DOCUMENTS_DIR = BASE_DIR / "data" / "documents"
 SUPPORTED_DOCUMENT_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".xlsm"}
 
 app = FastAPI(title="School AI - THCS&THPT Tiên Yên")
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://tien-yen.github.io",
-    ],
-    allow_credentials=False,
-    allow_methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["Content-Type"],
-)
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 # One embedding model + one Chroma connection for the whole process.
