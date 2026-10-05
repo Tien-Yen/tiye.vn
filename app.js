@@ -1,10 +1,3 @@
-// Public TiYe AI backend
-const API_BASE = "https://desktop-qb-971.tail03a7f6.ts.net";
-
-function apiUrl(path) {
-  return `${API_BASE}${path}`;
-}
-
 const state = {
   sessionId: localStorage.getItem("tiye_ai_session") || null,
   busy: false,
@@ -35,7 +28,7 @@ function setStatus(ok, label) {
 
 async function checkHealth() {
   try {
-    const res = await fetch(apiUrl("/api/health"), { cache: "no-store" });
+    const res = await fetch("/api/health", { cache: "no-store" });
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || "Health check failed");
 
@@ -116,7 +109,7 @@ async function sendQuestion(question) {
   showTyping();
 
   try {
-    const res = await fetch(apiUrl("/api/chat"), {
+    const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -208,7 +201,7 @@ function renderDocuments(filter = "") {
   }
 
   documentsList.innerHTML = items.map((item) => {
-    const href = item.download_url ? new URL(item.download_url, API_BASE || window.location.href).href : "";
+    const href = String(item.download_url || "");
     const safeHref = href.replaceAll("'", "%27");
     return `
       <article class="document-item">
@@ -225,7 +218,7 @@ function renderDocuments(filter = "") {
 async function loadDocuments() {
   documentsList.innerHTML = `<div class="documents-loading">Đang tải danh sách tài liệu...</div>`;
   try {
-    const res = await fetch(apiUrl("/api/documents"), { cache: "no-store" });
+    const res = await fetch("/api/documents", { cache: "no-store" });
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || "Không thể tải danh sách tài liệu.");
     documentsCache = data.documents || [];
