@@ -373,4 +373,4 @@ def reset_chat(request: ChatRequest) -> dict:
                 session["timetable"].context.clear()
         return {"status": "ok", "session_id": sid}
 
-    return {"status": "ok", "session_id": uuid.uuid4().hex}
+    return {"status": "ok", "session_id": uuid.uuid4().hex} 
