@@ -21,11 +21,11 @@ from timetable_engine import TimetableEngine
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
 OLLAMA_MODEL = "qwen3:4b"
-OLLAMA_TIMEOUT = 300
+OLLAMA_TIMEOUT = 420
 
 EVIDENCE_TOP_K = 6
-MAX_EVIDENCE_CHARS = 12000
-MAX_CHARS_PER_EVIDENCE = 2000
+MAX_EVIDENCE_CHARS = 10000
+MAX_CHARS_PER_EVIDENCE = 1250
 
 
 def build_evidence(rows: list[dict]) -> tuple[str, int]:
@@ -134,7 +134,7 @@ Chỉ trả lời bằng Tiếng Việt, tối đa 1-2 câu. Không trình bày 
         "keep_alive": "10m",
         "options": {
             "temperature": 0.0,
-            "num_predict": 4096,
+            "num_predict": 2048,
         },
     }
 
