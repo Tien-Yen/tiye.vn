@@ -1,11 +1,10 @@
 // Public TiYe AI backend
-const API_BASE = "https://desktop-qb-971.tail03a7f6.ts.net";
+const API_BASE = "https://desktop-vfrv4p2.tail03a7f6.ts.net";
 
 function apiUrl(path) {
-  const base = API_BASE.replace(/\/+$/, "");
-  const cleanPath = String(path).replace(/^\/+/, "");
-  return `${base}/${cleanPath}`;
+  return `${API_BASE}${path}`;
 }
+
 const state = {
   sessionId: localStorage.getItem("tiye_ai_session") || null,
   busy: false,
