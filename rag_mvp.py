@@ -21,7 +21,7 @@ from timetable_engine import TimetableEngine
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
 OLLAMA_MODEL = "qwen3:4b"
-OLLAMA_TIMEOUT = 420
+OLLAMA_TIMEOUT = 300
 
 EVIDENCE_TOP_K = 6
 MAX_EVIDENCE_CHARS = 12000
