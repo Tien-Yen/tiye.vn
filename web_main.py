@@ -33,7 +33,15 @@ SUPPORTED_DOCUMENT_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".xlsm"}
 
 app = FastAPI(title="School AI - THCS&THPT Tiên Yên")
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://tien-yen.github.io",
+    ],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # One embedding model + one Chroma connection for the whole process.
 # This avoids reloading the model for every browser request.
 model = None
